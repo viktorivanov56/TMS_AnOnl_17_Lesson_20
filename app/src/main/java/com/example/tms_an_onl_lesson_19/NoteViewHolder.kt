@@ -3,20 +3,18 @@ package com.example.tms_an_onl_lesson_19
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tms_an_onl_lesson_19.databinding.ItemNoteBinding
 
-class NoteViewHolder (itemView: View, private val listener: OnNoteClickListener):
-    RecyclerView.ViewHolder(itemView), View.OnClickListener{
-    private val titel: TextView = itemView.findViewById(R.id.title_textview)
-    private val text: TextView = itemView.findViewById(R.id.text_textview)
-    private val date: TextView = itemView.findViewById(R.id.date_textview)
+class NoteViewHolder (private val binding: ItemNoteBinding, private val listener: OnNoteClickListener):
+    RecyclerView.ViewHolder(binding.root), View.OnClickListener{
 
     init {
-        itemView.setOnClickListener(this)
+        binding.root.setOnClickListener(this)
     }
     fun bind(note: Note){
-        titel.text = note.title
-        text.text = note.text
-        date.text = note.date
+        binding.titleTextview.text = note.title
+        binding.textTextview.text = note.text
+        binding.dateTextview.text = note.date
 
     }
 
